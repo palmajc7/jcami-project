@@ -144,7 +144,7 @@ export default function SkillsPage() {
 {/* fourth section:  */}
       <PageCta
         title="Let’s stay connected."
-        description="Whenever you’re ready, I’m around."
+        description="Always open to new ideas, collaborations, and good conversations."
         buttonLabel="Connect"
         href="/connect"
       />
