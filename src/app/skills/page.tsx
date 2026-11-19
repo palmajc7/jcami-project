@@ -95,7 +95,7 @@ export default function SkillsPage() {
           {/* <h1>Full-scope support, from strategy to launch.</h1> */}
           <h1>Vision, design, and technology in flow.</h1>
           <p className={styles.heroSubtitle}>
-            Great ideas need the right strategy, design, and execution to make an impact.<br /> Here’s where I can help.
+            Great ideas need the right strategy, design, and execution to make an impact.
           </p>
         </div>
 
