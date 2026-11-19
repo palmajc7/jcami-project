@@ -230,8 +230,6 @@ export default function AboutHero() {
         </h1>
         <p className={styles.description}>
           WHERE CODE MEETS CREATIVITY
-          <br />
-          BASED IN DUBAI, WORKING WORLDWIDE
         </p>
       </section>
 
