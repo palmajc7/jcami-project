@@ -45,10 +45,10 @@ export default function ClosingCta() {
     })();
   }, []);
 
-  // Services and About pages each have their own closing CTA section (see
-  // .cta in services.module.css / about.module.css) — skip this one there
+  // Skills and About pages each have their own closing CTA section (see
+  // .cta in skills/services.module.css / about.module.css) — skip this one there
   // to avoid a duplicate.
-  if (pathname === "/services" || pathname === "/about") return null;
+  if (pathname === "/skills" || pathname === "/about") return null;
 
   return (
     <section className={styles.closing} aria-label="Get in touch">
@@ -110,9 +110,6 @@ export default function ClosingCta() {
       <div className={`container ${styles.meta}`}>
         <WhatsAppButton className={styles.whatsapp} />
         <span className={styles.location}>Dubai, UAE</span>
-        <a href="mailto:hello@jcami.dev" className={styles.email}>
-          hello@jcami.dev
-        </a>
         <p className={styles.copyright}>&copy; {year} JOANE CAMILLE</p>
       </div>
     </section>

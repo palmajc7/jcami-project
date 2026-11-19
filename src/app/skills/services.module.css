@@ -70,24 +70,13 @@
   text-shadow: 0 2px 16px rgba(255, 255, 255, 0.85), 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
-/* Overrides the global .eyebrow's indigo text and accent dot with the
-   header's brand red, so the "Services" label reads as the same color
-   as the header floating above it. */
-.heroInner :global(.eyebrow) {
-  color: var(--color-brand);
-}
-
-.heroInner :global(.eyebrow)::before {
-  background: var(--color-brand);
-}
-
 .heroSubtitle {
   font-size: var(--text-body-lg);
   color: var(--color-neutral-900);
 }
 
 /* "Scroll to the next section" affordance — a plain anchor to the next
-   section's id (#offer on .list below) rather than a JS click handler, so
+   section's id (#skills on .list below) rather than a JS click handler, so
    it rides on the same native smooth scroll (globals.css
    html { scroll-behavior: smooth }) as every other in-page jump would.
    Positioned absolute rather than centered via flex inside .heroInner:

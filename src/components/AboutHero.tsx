@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import Patronus, { createPatronusCast, describePatronus, type PatronusCast, type PatronusKind } from "./Patronus";
+import { useEffect, useRef, useState } from "react";
 import styles from "./AboutHero.module.css";
 
 type Phase = "idle" | "descend" | "grow" | "split" | "revealed";
@@ -26,15 +25,12 @@ A creative thinker by nature, Cami connects fragments, recognizes patterns, and 
 
 Cami began her professional journey as a Software Engineer at Accenture. Since then, she has built software for the healthcare and events industries, progressing from Software Developer to her current role as a Senior Software Developer. Along the way, she discovered that being a creator and an operator were never opposing qualities. Technical discipline amplifies her creativity, providing the clarity and structure needed to turn ideas into reality.
 
-Cami's work has also evolved into entrepreneurship through PALCANA, a UAE-registered company licensed for computer systems and software design. Through PALCANA, she brings her technical expertise and creative perspective into independent client engagements, developing purposeful digital solutions for businesses and brands.
-
 That perspective also shapes the way Cami thinks about AI. For her, the challenge is no longer simply adding an AI feature or chatbox to a product, but understanding what an interface should feel like when AI becomes an active participant—taking action and making decisions on someone’s behalf. When that happens, clarity becomes the foundation of trust. Cami is drawn to creating experiences that make AI’s actions understandable, preserve human agency, and give users a clear path forward—especially where established patterns do not yet exist.
 
 At the heart of Cami’s identity is ᜃᜋᜒ, the Baybayin rendering of Ka-mi. In this pre-colonial Philippine writing system, ᜃ represents ka, while ᜋᜒ represents mi. Together, they form Cami’s name and a personal emblem rooted in Filipino heritage.
 
 More than a visual signature, ᜃᜋᜒ represents the creative identity Cami brings to everything she builds. It reflects her approach: understanding the structure behind an idea, then shaping it into something personal, relevant, and tangible. Just as Baybayin gives her name a visual form, code gives her imagination a way to become real.
 
-Based in Dubai and working worldwide, Cami brings clarity to complexity and transforms ideas into experiences that feel thoughtful, purposeful, and distinctly human.
 `;
 
 const BIO_PARAGRAPHS = bio.trim().split(/\n{2,}/);
@@ -68,18 +64,6 @@ export default function AboutHero() {
   const bioViewportRef = useRef<HTMLDivElement>(null);
   const bioInnerRef = useRef<HTMLDivElement>(null);
   const [scrollRange, setScrollRange] = useState(0);
-  const [patronus, setPatronus] = useState<PatronusCast | null>(null);
-  const lastPatronusRef = useRef<PatronusKind | undefined>(undefined);
-  const [announcement, setAnnouncement] = useState("");
-
-  const castPatronus = () => {
-    const cast = createPatronusCast(lastPatronusRef.current);
-    lastPatronusRef.current = cast.kind;
-    setPatronus(cast);
-    setAnnouncement(`Expecto Patronum! ${describePatronus(cast.kind)} appears.`);
-  };
-
-  const clearPatronus = useCallback(() => setPatronus(null), []);
 
   useEffect(() => {
     aliveRef.current = true;
@@ -234,15 +218,7 @@ export default function AboutHero() {
             Joane Camille
           </Link>
       
-          <button
-            type="button"
-            className={styles.markTrigger}
-            onClick={castPatronus}
-            aria-label="Cast your patronus"
-          >
-            <span className={styles.castHint} aria-hidden="true">
-              CAST YOUR PATRONUS
-            </span>
+          <span className={styles.markWrap} aria-hidden="true">
             <Image
               src="/images/kami.png"
               alt=""
@@ -250,17 +226,12 @@ export default function AboutHero() {
               height={56}
               className={styles.mark}
             />
-          </button>
+          </span>
         </h1>
         <p className={styles.description}>
           WHERE CODE MEETS CREATIVITY
           <br />
           BASED IN DUBAI, WORKING WORLDWIDE
-        </p>
-
-        {patronus && <Patronus key={patronus.key} cast={patronus} onDone={clearPatronus} />}
-        <p className="visuallyHidden" aria-live="polite">
-          {announcement}
         </p>
       </section>
 

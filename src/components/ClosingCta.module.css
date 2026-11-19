@@ -112,25 +112,13 @@
   justify-self: start;
 }
 
-.email {
-  justify-self: center;
-  color: var(--color-neutral-700);
-  transition: color 0.2s var(--ease-out);
-}
-
-.email:hover,
-.email:focus-visible {
-  color: var(--color-brand);
-}
-
 .copyright {
   justify-self: end;
   white-space: nowrap;
 }
 
 /* ==========================================================================
-   Responsive — phones. Three columns get cramped fast once the email
-   address is in the mix, so this stacks them centered instead, same as
+   Responsive — phones. Three columns get cramped fast, so this stacks them centered instead, same as
    Footer's own .top collapsing to a single column below its md breakpoint.
    ========================================================================== */
 @media (max-width: 640px) {
@@ -142,7 +130,6 @@
   }
 
   .location,
-  .email,
   .copyright {
     justify-self: center;
   }

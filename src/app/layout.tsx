@@ -129,7 +129,7 @@ export default function RootLayout({
           <RouteScrollReset />
           <Header />
           <main>{children}</main>
-          <ClosingCta />
+          {/* <ClosingCta /> */}
         </div>
       </body>
     </html>

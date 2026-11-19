@@ -35,7 +35,7 @@ export default function ConnectPage() {
         </div>
       </section>
 
-      <CreativePool />
+
       <BackToTopButton />
     </>
   );

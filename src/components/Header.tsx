@@ -7,21 +7,21 @@ import styles from "./Header.module.css";
 
 const NAV_LINKS = [
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/skills", label: "Skills" },
   { href: "/connect", label: "Connect" },
 ];
 
 
-const OVERLAY_LAYOUT_PATHS = new Set(["/", "/about", "/services", "/connect"]);
+const OVERLAY_LAYOUT_PATHS = new Set(["/", "/about", "/skills", "/connect"]);
 
 
-const TRANSPARENT_OVER_DARK_HERO_PATHS = new Set(["/", "/services"]);
+const TRANSPARENT_OVER_DARK_HERO_PATHS = new Set(["/", "/skills"]);
 
 
-const STATIC_OVERLAY_PATHS = new Set(["/connect", "/services"]);
+const STATIC_OVERLAY_PATHS = new Set(["/connect", "/skills"]);
 
 
-const BRAND_NAV_PATHS = new Set(["/services"]);
+const BRAND_NAV_PATHS = new Set(["/skills"]);
 
 export default function Header() {
   const pathname = usePathname();

@@ -7,9 +7,9 @@ import { createPageMetadata } from "@/lib/seo";
 
 import BusinessNote from "./BusinessNote";
 import styles from "./services.module.css";
-import ServicesOffer from "./ServicesOffer";
+import SkillsList from "./SkillsList";
 
-export const metadata: Metadata = createPageMetadata(getPublicRoute("/services"));
+export const metadata: Metadata = createPageMetadata(getPublicRoute("/skills"));
 
 
 
@@ -61,7 +61,7 @@ const SKILL_IMAGES: { src: string; alt: string }[] = [
   },
 ];
 
-export default function ServicesPage() {
+export default function SkillsPage() {
   return (
     <>
 
@@ -92,7 +92,6 @@ export default function ServicesPage() {
         />
         <div className={styles.heroOverlay} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
-          <span className="eyebrow">Services</span>
           {/* <h1>Full-scope support, from strategy to launch.</h1> */}
           <h1>Vision, design, and technology in flow.</h1>
           <p className={styles.heroSubtitle}>
@@ -100,7 +99,7 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <a href="#offer" className={styles.heroScrollButton} aria-label="Scroll to what I offer">
+        <a href="#skills" className={styles.heroScrollButton} aria-label="Scroll to skills">
           <svg width="40" height="32" viewBox="0 0 24 18" fill="none" aria-hidden="true">
             <path
               className={styles.heroGlitchSilver}
@@ -130,9 +129,8 @@ export default function ServicesPage() {
       </section>
 
       {/* second section: */}
-      <ServicesOffer />
+      <SkillsList />
 
-      <BusinessNote />
 
       {/* third section: */}
       <SkillsShowcase
@@ -145,9 +143,9 @@ export default function ServicesPage() {
 
 {/* fourth section:  */}
       <PageCta
-        title="Not sure which service fits?"
-        description="Tell me about your project and I’ll help you figure out the right scope."
-        buttonLabel="Start the conversation"
+        title="Let’s stay connected."
+        description="Whenever you’re ready, I’m around."
+        buttonLabel="Connect"
         href="/connect"
       />
 

@@ -1,32 +1,16 @@
-const PRODUCTION_SITE_URL = "https://jcami.dev";
-const DEVELOPMENT_SITE_URL = "http://localhost:3000";
-
-function isLocalHostname(hostname: string) {
-  return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
-}
+// Set NEXT_PUBLIC_SITE_URL to the public origin in production; without it,
+// canonical URLs, the sitemap, and social previews point at localhost.
+const FALLBACK_SITE_URL = "http://localhost:3000";
 
 function resolveSiteUrl() {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  const fallbackUrl =
-    process.env.NODE_ENV === "development" ? DEVELOPMENT_SITE_URL : PRODUCTION_SITE_URL;
+  if (!configuredUrl) return FALLBACK_SITE_URL;
 
   try {
-    const url = new URL(configuredUrl || fallbackUrl);
-
-    if (!["http:", "https:"].includes(url.protocol)) {
-      return fallbackUrl;
-    }
-
-    if (
-      process.env.NODE_ENV === "production" &&
-      (url.protocol !== "https:" || isLocalHostname(url.hostname))
-    ) {
-      return PRODUCTION_SITE_URL;
-    }
-
-    return url.origin;
+    const url = new URL(configuredUrl);
+    return ["http:", "https:"].includes(url.protocol) ? url.origin : FALLBACK_SITE_URL;
   } catch {
-    return fallbackUrl;
+    return FALLBACK_SITE_URL;
   }
 }
 
@@ -42,11 +26,10 @@ export const siteConfig = {
   language: "en",
   locale: "en_US",
   location: "Dubai, United Arab Emirates",
-  email: "hello@jcami.dev",
   whatsapp: {
     number: "971585650930",
     message:
-      "Hi Joane! I found your portfolio on jcami.dev and I'd love to chat about a project. Are you available for a quick call this week?",
+      "Hi Joane! I found your portfolio and I'd love to chat about a project. Are you available for a quick call this week?",
   },
   ogImage: {
     path: "/images/bg.png",
@@ -90,11 +73,11 @@ export const publicRoutes = [
     priority: 0.8,
   },
   {
-    path: "/services",
-    title: "Services",
+    path: "/skills",
+    title: "Skills",
     description:
-      "Explore Joane Camille's brand strategy, product design, technical architecture, web development, and growth consulting services.",
-    lastModified: "2026-09-09",
+      "Explore Joane Camille's capabilities, tech stack, and creative inspirations across strategy, design, and development.",
+    lastModified: "2026-11-20",
     changeFrequency: "monthly",
     priority: 0.8,
   },

@@ -109,8 +109,7 @@
    heading so the text reads as one sequence instead of popping in at once. */
 .heading,
 .submit,
-.success,
-.error {
+.success {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
@@ -122,8 +121,7 @@
 }
 
 .pool[data-visible] .submit,
-.pool[data-visible] .success,
-.pool[data-visible] .error {
+.pool[data-visible] .success {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.15s;
@@ -150,9 +148,4 @@
 .success {
   font-size: var(--text-body-lg);
   color: var(--color-secondary);
-}
-
-.error {
-  color: var(--color-error);
-  font-size: var(--text-small);
 }

@@ -4,13 +4,11 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import styles from "./CreativePool.module.css";
 
-type Status = "idle" | "submitting" | "success" | "error";
-
 // Connect page, below the hero — an open call for collaborators rather
 // than a client-project form (see ContactForm), so it only asks for an
-// email and posts to /api/subscribe instead of /api/contact.
+// email and a role. Front-end only: submitting just shows the confirmation.
 export default function CreativePool() {
-  const [status, setStatus] = useState<Status>("idle");
+  const [isJoined, setIsJoined] = useState(false);
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,26 +39,9 @@ export default function CreativePool() {
     return () => observer.disconnect();
   }, []);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!canSubmit) return;
-    setStatus("submitting");
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, role }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Subscription failed");
-      }
-
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    }
+    if (canSubmit) setIsJoined(true);
   }
 
   return (
@@ -84,7 +65,7 @@ export default function CreativePool() {
           }
         />
 
-        {status === "success" ? (
+        {isJoined ? (
           <p className={styles.success} role="status">
             You&rsquo;re on the list — I&rsquo;ll be in touch when a project calls for it.
           </p>
@@ -126,20 +107,14 @@ export default function CreativePool() {
             <button
               type="submit"
               className={styles.submit}
-              disabled={status === "submitting" || !canSubmit}
+              disabled={!canSubmit}
             >
               <span className={styles.submitLabel}>
-                {status === "submitting" ? "Joining" : "Join the pool"}
+                Join the pool
               </span>
             </button>
           </form>
         )}
-
-        {status === "error" ? (
-          <p className={styles.error} role="alert">
-            Something went wrong. Please try again.
-          </p>
-        ) : null}
       </div>
     </section>
   );

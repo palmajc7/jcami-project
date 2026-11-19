@@ -3,65 +3,54 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./services.module.css";
 
-const SERVICES = [
+const SKILLS = [
     {
-        title: "Brand Strategy",
+        title: "Front-End Engineering",
         description:
-            "Clarify what your brand stands for, who it serves, and why it matters—then turn that strategy into messaging and an identity people remember.",
-        deliverables: [
-            "Positioning & differentiation",
-            "Audience & value proposition",
-            "Messaging framework",
-            "Visual identity direction",
+            "Building fast, accessible, and maintainable interfaces with a Computer Engineering foundation and years of shipping production software for healthcare and events.",
+        highlights: [
+            "Next.js & React",
+            "TypeScript & JavaScript",
+            "Responsive, accessible UI",
+            "Motion & interaction",
         ],
     },
     {
-        title: "Product Design",
+        title: "AI Experience Design",
         description:
-            "Turn user needs and business goals into intuitive digital experiences—from early concepts and prototypes to polished, scalable interfaces.",
-        deliverables: [
-            "Product discovery & research",
-            "User journeys & flows",
-            "Wireframes & prototypes",
-            "UI & design systems",
+            "Designing interfaces where AI takes action on someone’s behalf—making its decisions understandable, keeping people in control, and giving them a clear path forward.",
+        highlights: [
+            "Agentic UX patterns",
+            "Explainable AI actions",
+            "Human-in-the-loop controls",
+            "AI feature integration",
         ],
     },
     {
-        title: "Technical Strategy & Architecture",
+        title: "Backend Development",
         description:
-            "Reduce risk before development with a clear technical direction, practical system architecture, and a roadmap aligned with your product goals.",
-        deliverables: [
-            "Technical discovery & scoping",
-            "System architecture",
-            "Technology selection",
-            "Delivery roadmap",
+            "Designing the logic, data, and services behind the interface—secure, reliable systems built to handle real users in industries like healthcare and events.",
+        highlights: [
+            "API design & integrations",
+            "Databases & data modeling",
+            "Authentication & security",
+            "Server-side rendering & caching",
         ],
     },
     {
-        title: "Web Development",
+        title: "Full-Stack & Platforms",
         description:
-            "Build and launch fast, accessible digital products—from high-performing websites to secure SaaS platforms, dashboards, and customer portals.",
-        deliverables: [
-            "Responsive websites",
-            "SaaS applications & dashboards",
-            "CMS, APIs & integrations",
-            "Authentication & subscriptions",
-        ],
-    },
-    {
-        title: "Growth & Expansion Consulting",
-        description:
-            "Turn customer and performance insights into a focused strategy for increasing conversion, entering new markets, and scaling sustainable growth.",
-        deliverables: [
-            "Growth opportunity analysis",
-            "Conversion optimization",
-            "Market expansion strategy",
-            "Prioritized scaling roadmap",
+            "Connecting the front end to the systems behind it, from APIs and content to commerce, hosting, and measurement.",
+        highlights: [
+            "Node.js & APIs",
+            "CMS & Headless Shopify",
+            "DevOps & hosting",
+            "Analytics & tracking",
         ],
     },
 ];
 
-export default function ServicesOffer() {
+export default function SkillsList() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement | null>(null);
@@ -91,24 +80,24 @@ export default function ServicesOffer() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="offer" className={`section ${styles.list}`}>
+        <section ref={sectionRef} id="skills" className={`section ${styles.list}`}>
             <div className="container">
                 <div className={styles.offerLayout}>
                     <div className={`${styles.offerIntro} ${isVisible ? styles.offerIntroVisible : ""}`.trim()}>
-                        <span className="eyebrow">What I Offer</span>
-                        <h2>Services</h2>
+                        <span className="eyebrow">What I Do</span>
+                        <h2>Skills</h2>
                         <p>
-                            Choose a focused service or combine them into a seamless, end-to-end engagement tailored to your goals and the support you need.
+                            Where engineering discipline meets creative instinct—the skills I bring from idea to interface.
                         </p>
                     </div>
 
                     <div className={styles.serviceItems}>
-                        {SERVICES.map((service, index) => {
+                        {SKILLS.map((skill, index) => {
                             const isActive = activeIndex === index;
 
                             return (
                                 <article
-                                    key={service.title}
+                                    key={skill.title}
                                     className={`${styles.serviceItem} ${isActive ? styles.active : ""} ${isVisible ? styles.visible : ""}`.trim()}
                                     tabIndex={0}
                                     onClick={() => setActiveIndex(index)}
@@ -121,13 +110,13 @@ export default function ServicesOffer() {
                                 >
                                     <div className={styles.serviceItemHeader}>
                                         <span className={styles.serviceIndex}>{String(index + 1).padStart(2, "0")}</span>
-                                        <h3 className={styles.serviceTitle}>{service.title}</h3>
+                                        <h3 className={styles.serviceTitle}>{skill.title}</h3>
                                     </div>
 
                                     <div className={styles.serviceItemBody}>
-                                        <p>{service.description}</p>
+                                        <p>{skill.description}</p>
                                         <ul className={styles.deliverables}>
-                                            {service.deliverables.map((item) => (
+                                            {skill.highlights.map((item) => (
                                                 <li key={item}>{item}</li>
                                             ))}
                                         </ul>

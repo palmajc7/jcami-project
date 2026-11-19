@@ -22,21 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Contact form
 
-The contact form ([src/components/ContactForm.tsx](src/components/ContactForm.tsx)) submits to
-[src/app/api/contact/route.ts](src/app/api/contact/route.ts), which sends the message to
-`hello@jcami.dev` via [Resend](https://resend.com).
-
-Email sending is configured in the Resend dashboard, not in this repo:
-
-1. Verify the `jcami.dev` domain under [resend.com/domains](https://resend.com/domains) (adds SPF/DKIM DNS records).
-2. Create an API key under [resend.com/api-keys](https://resend.com/api-keys).
-3. Set it locally in `.env.local` (gitignored) and in your host's env vars for production — see `.env.example`:
-
-   ```bash
-   RESEND_API_KEY=re_...
-   ```
-
-Without a verified domain, Resend will only deliver from its shared `onboarding@resend.dev` address to the account's own email — useful for testing before DNS propagates.
+The contact form ([src/components/ContactForm.tsx](src/components/ContactForm.tsx)) and the creative pool signup ([src/components/CreativePool.tsx](src/components/CreativePool.tsx)) are front-end only: submitting shows a success message and does not send anything anywhere.
 
 ## SEO and search verification
 
@@ -46,18 +32,17 @@ and supplemental `llms.txt` are generated from
 production hosting environment:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://jcami.dev
+NEXT_PUBLIC_SITE_URL=
 GOOGLE_SITE_VERIFICATION=
 BING_SITE_VERIFICATION=
 ```
 
-`NEXT_PUBLIC_SITE_URL` must be the public HTTPS origin without a path. The
-production-safe fallback is `https://jcami.dev`; localhost values are rejected
-during production builds. Google and Bing verification values are optional and
+`NEXT_PUBLIC_SITE_URL` must be the public HTTPS origin without a path. It is
+required in production; without it, URLs fall back to `http://localhost:3000`. Google and Bing verification values are optional and
 are emitted only when configured.
 
 After deployment, verify `/robots.txt`, `/sitemap.xml`, and `/llms.txt`, then
-submit `https://jcami.dev/sitemap.xml` in Google Search Console and Bing
+submit `<your-domain>/sitemap.xml` in Google Search Console and Bing
 Webmaster Tools. If a CDN or WAF is enabled, ensure it does not challenge or
 block Googlebot, Bingbot, OAI-SearchBot, or PerplexityBot on public routes.
 

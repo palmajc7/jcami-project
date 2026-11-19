@@ -7,7 +7,7 @@ import styles from "./Footer.module.css";
 const FOOTER_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/skills", label: "Skills" },
   { href: "/connect", label: "Connect" },
 ];
 

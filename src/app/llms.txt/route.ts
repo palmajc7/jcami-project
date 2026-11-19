@@ -17,9 +17,9 @@ export function GET() {
 
 - [About ${siteConfig.name}](${absoluteUrl("/about")})
 
-## Services and expertise
+## Skills and expertise
 
-- [Services](${absoluteUrl("/services")}): Brand strategy, product design, technical strategy and architecture, web development, and growth consulting.
+- [Skills](${absoluteUrl("/skills")}): Front-end engineering, AI experience design, backend development, and full-stack platforms.
 
 ## Selected projects
 
