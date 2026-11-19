@@ -230,6 +230,8 @@ export default function AboutHero() {
         </h1>
         <p className={styles.description}>
           WHERE CODE MEETS CREATIVITY
+          <br />
+          DESIGNED WITH INTENT, BUILT TO EVOLVE
         </p>
       </section>
 
