@@ -37,21 +37,6 @@ export const siteConfig = {
     height: 1080,
     alt: "Joane Camille digital product portfolio",
   },
-  knowsAbout: [
-    "Web development",
-    "Product design",
-    "Brand strategy",
-    "Technical strategy and architecture",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "Node.js",
-    "Design systems",
-    "Headless Shopify",
-    "CMS integration",
-    "Analytics and tracking",
-  ],
 } as const;
 
 export const publicRoutes = [

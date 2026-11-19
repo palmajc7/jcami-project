@@ -83,7 +83,6 @@ export function siteIdentityJsonLd() {
           "@type": "Place",
           name: siteConfig.location,
         },
-        knowsAbout: siteConfig.knowsAbout,
       },
       {
         "@type": "WebSite",
