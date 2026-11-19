@@ -31,7 +31,7 @@ export default function HomePageContent() {
           </h1>
           <p className={styles.heroSubheading}>
             I turn ideas into digital experiences with intention—shaping everything from visual direction to development and launch.
-             <br />Scroll to explore selected projects.
+             <br />
           </p>
           <div className={styles.heroCta}>
             <Button
